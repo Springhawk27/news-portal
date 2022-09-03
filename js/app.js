@@ -58,7 +58,7 @@ const displayNews = (categoryNews) => {
                          <p class="card-text text-truncate">${news.details.slice(1, 200)}</p>
                     </div>
 
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between          align-items-center">
                         <div class="d-flex gap-2">
                             <img class="rounded-circle" style="width: 64px; height: 64px;" src="${news.author?.img ? news.author?.img : 'No Thumbnail'}" alt="">
                              <div>
@@ -74,7 +74,7 @@ const displayNews = (categoryNews) => {
                             <span>${news.rating?.number ? news.rating.number : 'No Rating'}</span>
                          </div>
                         <div>
-                          <a class="text-decoration-none text-secondary" href="#">See Details</a>
+                          <a onclick="loadNewsDetails('${news._id}')" class="text-decoration-none text-secondary" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">See Details</a>
                          <i class="fas fa-arrow-right text-primary"></i>
                          </div>
                     </div>
@@ -84,7 +84,47 @@ const displayNews = (categoryNews) => {
     </div>`;
         newsContainer.appendChild(newsDiv);
     });
-
 }
+
+
+//  load news detail on click 
+const loadNewsDetails = async (news_id) => {
+    const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayNewsDetails(data.data[0]);
+    // console.log(data.data[0])
+}
+
+//  display news detail in amodal
+const displayNewsDetails = newsDetail => {
+    console.log(newsDetail);
+    const newsTitle = document.getElementById('newsDetailTitle');
+    newsTitle.innerText = newsDetail.title;
+    const newsDetails = document.getElementById('news-details');
+    newsDetails.innerHTML = `
+        <p>Decription: ${newsDetail.details ? newsDetail.details : 'No Details Found'}</p>
+
+        <div class="d-flex justify-content-between          align-items-center">
+        <div class="d-flex gap-2">
+            <img class="rounded-circle" style="width: 64px; height: 64px;"
+                src="${newsDetail.author?.img ? newsDetail.author?.img : 'No Thumbnail'}" alt="">
+            <div>
+                <h5 class="card-title fs-6">${newsDetail.author?.name ? newsDetail.author.name : 'No Author Found'}</h5>
+                <p>${newsDetail.author?.published_date ? newsDetail.author.published_date : 'Date Not Available'}</p>
+            </div>
+        </div>
+        <div>
+            <i class="far fa-eye"></i>
+            <span class="ms-2">${newsDetail.total_view ? newsDetail.total_view : 'No Views'}</span>
+        </div>
+        <div>
+            <span>${newsDetail.rating?.number ? newsDetail.rating.number : 'No Rating'}</span>
+        </div>
+    </div>
+       
+    `
+}
+
 
 loadCategories()
