@@ -60,18 +60,18 @@ const displayNews = (categoryNews) => {
 
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex gap-2">
-                            <img class="rounded-circle" style="width: 64px; height: 64px;" src="${news.author.img}" alt="">
+                            <img class="rounded-circle" style="width: 64px; height: 64px;" src="${news.author?.img ? news.author?.img : 'No Thumbnail'}" alt="">
                              <div>
-                                <h5 class="card-title">${news.author.name ? news.author.name : 'No Author'}</h5>
-                                <p>${news.author.published_date}</p>
+                                <h5 class="card-title fs-6">${news.author?.name ? news.author.name : 'No Author'}</h5>
+                                <p>${news.author?.published_date ? news.author.published_date : 'Date Not Available'}</p>
                             </div>
                         </div>
                         <div>
                             <i class="far fa-eye"></i>
-                            <span class="ms-2">1.5M</span>
+                            <span class="ms-2">${news.total_view ? news.total_view : 'No Views'}</span>
                          </div>
                         <div>
-                            <span>4.5</span>
+                            <span>${news.rating?.number ? news.rating.number : 'No Rating'}</span>
                          </div>
                         <div>
                           <a class="text-decoration-none text-secondary" href="#">See Details</a>
