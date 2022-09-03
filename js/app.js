@@ -1,10 +1,15 @@
 // load categories 
 const loadCategories = async () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`
-    const res = await fetch(url);
-    const data = await res.json();
-    displayCategories(data.data.news_category);
-    // console.log(data.data.news_category)
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        displayCategories(data.data.news_category);
+        // console.log(data.data.news_category)
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 // display categories
@@ -41,12 +46,16 @@ const loadCategoricalNews = async (id, category_name) => {
     toggleSpinner(true);
 
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`
-    console.log(id)
 
-    const res = await fetch(url);
-    const data = await res.json();
-    // console.log(data.data)
-    displayNews(data.data, category_name);
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        // console.log(data.data)
+        displayNews(data.data, category_name);
+    }
+    catch (error) {
+        console.log(error);
+    }
 
 }
 
@@ -150,7 +159,7 @@ const displayNewsDetails = newsDetail => {
 
     const newsDetails = document.getElementById('news-details');
     newsDetails.innerHTML = `
-        <p>Decription: ${newsDetail.details ? newsDetail.details : 'No Details Found'}</p>
+        <p>${newsDetail.details ? newsDetail.details : 'No Details Found'}</p>
 
         <div class="d-flex justify-content-between          align-items-center">
         <div class="d-flex gap-2">
@@ -173,6 +182,5 @@ const displayNewsDetails = newsDetail => {
        
     `
 }
-
 
 loadCategories()
