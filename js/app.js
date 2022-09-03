@@ -73,42 +73,46 @@ const displayNews = (categoryNews, category_name) => {
     else {
         newsFound.classList.add('d-none');
     }
-
+    console.log('category news', categoryNews)
+    categoryNews.sort((a, b) => {
+        return b.total_view - a.total_view
+    })
     // display all news
+
     categoryNews.forEach(news => {
         const newsDiv = document.createElement('div');
-        newsDiv.classList.add('row', 'row-cols-1', 'row-cols-md-1', 'g-4');
+        // newsDiv.classList.add('row', 'row-cols-1', 'row-cols-sm-1', 'g-4');
         newsDiv.innerHTML = `
      <div class="card mb-3 p-0">
         <div class="row g-0">
             <div class="col-md-4 d-flex align-items-center">
-                <img src="${news.thumbnail_url}" class="img-fluid rounded-start  h-100 p-3" alt="...">
+                <img src="${news.thumbnail_url}" class="img-fluid rounded-start  h-100 w-100 p-3" alt="...">
             </div>
             <div class="col-md-8 ">
-                <div class="h-100 card-body d-flex flex-column justify-content-between">
+                <div class="h-100 card-body d-flex flex-column justify-content-between gap-2">
                     <div class=" d-flex flex-column gap-4 mb-3">
                         <h5 class="card-title">${news.title}</h5>
                          <p class="card-text text-truncate">${news.details.slice(0, 200)}</p>
                     </div>
 
-                    <div class="d-flex justify-content-between          align-items-center">
+                    <div class="d-flex justify-content-between          align-items-center gap-2">
                         <div class="d-flex gap-2">
                             <img class="rounded-circle" style="width: 64px; height: 64px;" src="${news.author?.img ? news.author?.img : 'No Thumbnail'}" alt="">
                              <div>
                                 <h5 class="card-title fs-6">${news.author?.name ? news.author.name : 'No Author'}</h5>
-                                <p>${news.author?.published_date ? news.author.published_date : 'Date Not Available'}</p>
+                                <p class="fs-6">${news.author?.published_date ? news.author.published_date : 'Date Not Available'}</p>
                             </div>
                         </div>
                         <div>
                             <i class="far fa-eye text-info"></i>
-                            <span class="ms-2">${news.total_view ? news.total_view : 'No Views'}</span>
+                            <span class="ms-0 ms-sm-2">${news.total_view ? news.total_view : 'No Views'}</span>
                          </div>
                         <div>
                               <i class="fas fa-star text-warning"></i>
                             <span>${news.rating?.number ? news.rating.number : 'No Rating'}</span>
                          </div>
-                        <div>
-                          <a onclick="loadNewsDetails('${news._id}')" class="text-decoration-none text-secondary" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">See Details</a>
+                        <div onclick="loadNewsDetails('${news._id}')">
+                          <a  class="text-decoration-none text-secondary d-none d-md-inline" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">See Details</a>
                          <i class="fas fa-arrow-right text-primary"></i>
                          </div>
                     </div>

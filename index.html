@@ -16,7 +16,7 @@
 
 <body>
     <!-- header section starts here -->
-    <header>
+    <header class="sticky-top">
         <nav class="navbar navbar-expand-lg bg-light  ">
             <div class="container  border-bottom py-3 ">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -32,7 +32,7 @@
                                 <a class="nav-link active" aria-current="page" href="index.html">News</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Blog</a>
+                                <a class="nav-link" href="blog.html">Blog</a>
                             </li>
 
                         </ul>
@@ -46,7 +46,7 @@
     <!-- main section starts here -->
     <main>
         <!-- category section starts here -->
-        <section class="container py-3 mb-3">
+        <section class="container py-3 mb-3 ">
             <div id="categories-container" class=" d-flex justify-content-between  flex-wrap gap-2">
             </div>
         </section>
@@ -71,8 +71,10 @@
         <!-- spinner section ends here -->
 
         <!-- categorical news section starts here -->
-        <section id="news-container" class="container">
+        <section class="container">
+            <div id="news-container" class="row row-cols-1 g-2">
 
+            </div>
         </section>
         <!-- categorical news section ends here -->
 
@@ -113,7 +115,7 @@
 
     <!-- footer section starts here -->
 
-    <footer class="text-center  bg-dark   border border-info py-5 mt-5">
+    <footer class="text-center  bg-dark   border border-info py-5 mt-5 ">
         <h2 class="mb-4  fs-2 text-info">News <span class="text-warning">Now</span></h2>
         <p class="text-white-50">Copyright @ 2022 All Rights Reserved.</p>
     </footer>
