@@ -18,7 +18,7 @@ const displayCategories = (categories) => {
 
     // display all categories
     categories.forEach(category => {
-        console.log(category)
+        // console.log(category)
         const categoryP = document.createElement('p');
 
         categoryP.innerHTML = `
@@ -82,7 +82,7 @@ const displayNews = (categoryNews, category_name) => {
     else {
         newsFound.classList.add('d-none');
     }
-    console.log('category news', categoryNews)
+    // console.log('category news', categoryNews)
     categoryNews.sort((a, b) => {
         return b.total_view - a.total_view
     })
@@ -101,7 +101,7 @@ const displayNews = (categoryNews, category_name) => {
                 <div class="h-100 card-body d-flex flex-column justify-content-between gap-2">
                     <div class=" d-flex flex-column gap-4 mb-3">
                         <h5 class="card-title">${news.title}</h5>
-                         <p class="card-text text-truncate">${news.details.slice(0, 200)}</p>
+                         <p class="card-text ">${news.details.slice(0, 300) + '...'}</p>
                     </div>
 
                     <div class="d-flex justify-content-between          align-items-center gap-2">
@@ -148,7 +148,7 @@ const loadNewsDetails = async (news_id) => {
 
 //  display news detail in amodal
 const displayNewsDetails = newsDetail => {
-    console.log(newsDetail);
+    // console.log(newsDetail);
     const newsTitle = document.getElementById('newsDetailTitle');
     newsTitle.innerText = newsDetail.title;
 
