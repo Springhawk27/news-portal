@@ -47,84 +47,135 @@
     <!-- main section starts here -->
     <main>
 
-        <!-- FAQ section starts here  -->
-
-        <section id="blog" class="container my-5 h-100">
+        <section class="container">
             <div class="w-100 d-flex  align-items-center justify-content-center text-center mb-3">
                 <div class=" w-75 d-flex flex-column align-items-center justify-content-center mt-3">
-                    <h2>Our Top Blog Post Of The Day</h2>
+                    <h2>Our Top Blog Posts Of The Day</h2>
                     <p class="text-black-50">Need some information? No worries we have so many questions answered</p>
                 </div>
             </div>
-            <div class="d-flex justify-content-center align-items-center">
-                <div class="accordion col col-lg-8 mx-auto col-12" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                What are the differences between var, let, and const?
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
+            <div id="blogs-container" class="row row-cols-1 g-2 w-75 mx-auto">
+                <div class="card mb-3 p-0 bg-light">
+                    <div class="row g-0">
 
-                                <strong>Var: </strong>Var is mutable means values of var can be changed. Var is globally
-                                scoped.<br>
-                                <strong>Let: </strong> Let is almost similar to var means it is also mutable and the
-                                value of let can be changed. But let is block scoped. <br>
-                                <strong>Const: </strong> Const is immutable means its value cannot be changed or
-                                re-assigned. It is also block scoped as let.
+                        <div class="col-md-12 ">
+                            <div class="h-100 card-body d-flex flex-column justify-content-between gap-2">
+                                <div class=" d-flex flex-column gap-4 mb-3">
+                                    <h5 class="card-title">What are the differences between var, let, and const?</h5>
+                                    <p class="card-text"><strong>Var: </strong>Var is mutable means values of var can be
+                                        changed. Var is globally
+                                        scoped.<br>
+                                        <strong>Let: </strong> Let is almost similar to var means it is also mutable and
+                                        the
+                                        value of let can be changed. But let is block scoped. <br>
+                                        <strong>Const: </strong> Const is immutable means its value cannot be changed or
+                                        re-assigned. It is also block scoped as let.
+                                    </p>
+                                </div>
 
+                                <div class="d-flex justify-content-between          align-items-center gap-2">
+                                    <div class="d-flex gap-2">
 
+                                        <div>
+                                            <h5 class="card-title fs-6">Sajjad Mahmud</h5>
+                                            <p class="fs-6">04 September, 2022</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <i class="far fa-eye text-info"></i>
+                                        <span class="ms-0 ms-sm-2">312</span>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                What is template literals in javascript? </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
+                </div>
+                <div class="card mb-3 p-0 bg-light">
+                    <div class="row g-0">
 
-                                <strong>Template literal </strong> is a new feature in javascript. It is introduced in
-                                ES6. It is also known as string literal. It allows us to perform the embedded expression
-                                in a string whereas it was not possible in a regular string. We can define a template
-                                string by using backtick(` `) instead of using single or double quotes. Now we can use
-                                any expression in this by using ${} and it is absolutely fine.
+                        <div class="col-md-12 ">
+                            <div class="h-100 card-body d-flex flex-column justify-content-between gap-2">
+                                <div class=" d-flex flex-column gap-4 mb-3">
+                                    <h5 class="card-title">What is template literals in javascript?</h5>
+                                    <p class="card-text"><strong>Template literal </strong> is a new feature in
+                                        javascript. It is introduced in
+                                        ES6. It is also known as string literal. It allows us to perform the embedded
+                                        expression
+                                        in a string whereas it was not possible in a regular string. We can define a
+                                        template
+                                        string by using backtick(` `) instead of using single or double quotes. Now we
+                                        can use
+                                        any expression in this by using ${} and it is absolutely fine.
+                                    </p>
+                                </div>
+
+                                <div class="d-flex justify-content-between          align-items-center gap-2">
+                                    <div class="d-flex gap-2">
+
+                                        <div>
+                                            <h5 class="card-title fs-6">Sajjad Mahmud</h5>
+                                            <p class="fs-6">04 September, 2022</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <i class="far fa-eye text-info"></i>
+                                        <span class="ms-0 ms-sm-2">312</span>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                What are the differences between map, foreach, filter and find</button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>.map() </strong> loop through every element in an array and returns a new array
-                                with the updated elements. <br>
-                                <strong>.forEach() </strong> is used to loop through on every element in an array but it
-                                does not change the original array and it always returns undefined if we try to return
-                                anything. <br>
-                                <strong>.filter()</strong> loop through every element in an array to check if it fulfils
-                                the criteria and returns a new array with the elements that meets the condition. <br>
-                                <strong>.find()</strong> loop through the element in an array and it returns the first
-                                element which meets the condition.
+                </div>
+                <div class="card mb-3 p-0 bg-light">
+                    <div class="row g-0">
 
+                        <div class="col-md-12 ">
+                            <div class="h-100 card-body d-flex flex-column justify-content-between gap-2">
+                                <div class=" d-flex flex-column gap-4 mb-3">
+                                    <h5 class="card-title">What are the differences between map, foreach, filter and
+                                        find</h5>
+                                    <p class="card-text"><strong>.map() </strong> loop through every element in an array
+                                        and returns a new array
+                                        with the updated elements. <br>
+                                        <strong>.forEach() </strong> is used to loop through on every element in an
+                                        array but it
+                                        does not change the original array and it always returns undefined if we try to
+                                        return
+                                        anything. <br>
+                                        <strong>.filter()</strong> loop through every element in an array to check if it
+                                        fulfils
+                                        the criteria and returns a new array with the elements that meets the condition.
+                                        <br>
+                                        <strong>.find()</strong> loop through the element in an array and it returns the
+                                        first
+                                        element which meets the condition.
+                                    </p>
+                                </div>
+
+                                <div class="d-flex justify-content-between          align-items-center gap-2">
+                                    <div class="d-flex gap-2">
+
+                                        <div>
+                                            <h5 class="card-title fs-6">Sajjad Mahmud</h5>
+                                            <p class="fs-6">04 September, 2022</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <i class="far fa-eye text-info"></i>
+                                        <span class="ms-0 ms-sm-2">312</span>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
-        <!-- faq section ends here  -->
+
+
     </main>
     <!-- main section ends here -->
 
