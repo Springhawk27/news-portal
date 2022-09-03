@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Now</title>
+    <!-- font awesome kit  -->
+    <script src="https://kit.fontawesome.com/ebd146b81d.js" crossorigin="anonymous"></script>
+    <!-- bootstrap cdn link  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
@@ -22,7 +25,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="d-flex justify-content-between w-100">
-                    <a class="navbar-brand text-info" href="#">News <span class="text-warning">Now</span></a>
+                    <a class="navbar-brand text-info fs-3" href="#">News <span class="text-warning">Now</span></a>
                     <div class="collapse navbar-collapse " id="navbarTogglerDemo03">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end w-100">
                             <li class="nav-item">
@@ -44,10 +47,37 @@
     <main>
         <!-- category section starts here -->
         <section class="container py-3">
-            <div id="categories-container" class=" d-flex justify-content-between text-secondary flex-wrap gap-2">
+            <div id="categories-container" class=" d-flex justify-content-between  flex-wrap gap-2">
             </div>
         </section>
         <!-- category section ends here -->
+
+        <!-- categorical news section starts here -->
+        <section id="news-container" class="container">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex ">
+                    <img src="" alt="">
+                    <div>
+                        <h5 class="card-title">Author Name</h5>
+                        <p>date</p>
+                    </div>
+                </div>
+                <div>
+                    <i class="far fa-eye"></i>
+                    <span class="ms-2">1.5M</span>
+                </div>
+                <div>
+                    <span>4.5</span>
+                </div>
+                <div>
+                    <a class="text-decoration-none text-secondary" href="#">See Details</a>
+                    <i class="fas fa-arrow-right text-primary"></i>
+                </div>
+
+            </div>
+        </section>
+        <!-- categorical news section ends here -->
+
 
     </main>
     <!-- main section ends here -->
