@@ -17,29 +17,63 @@ const displayCategories = (categories) => {
         const categoryP = document.createElement('p');
 
         categoryP.innerHTML = `
-                <a onclick="loadCategoricalNews('${category.category_id}')" class="text-decoration-none text-secondary" href="#" >${category.category_name}</a>
+                <a onclick="loadCategoricalNews('${category.category_id}','${category.category_name}')" class="text-decoration-none text-secondary" href="#" >${category.category_name}</a>
                 `;
         categoriesContainer.appendChild(categoryP);
+
 
     });
 }
 
+// spinner or loader
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
+        loaderSection.classList.remove('d-none')
+    }
+    else {
+        loaderSection.classList.add('d-none');
+    }
+}
+
 // load categorial news
-const loadCategoricalNews = async (id) => {
+const loadCategoricalNews = async (id, category_name) => {
+    toggleSpinner(true);
+
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`
     console.log(id)
 
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data.data)
-    displayNews(data.data);
+    // console.log(data.data)
+    displayNews(data.data, category_name);
 
 }
 
 // display categorical news
-const displayNews = (categoryNews) => {
+const displayNews = (categoryNews, category_name) => {
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
+
+    // display no phones found
+    const newsFound = document.getElementById('found-message');
+    if (categoryNews.length === 0) {
+        newsFound.classList.remove('d-none');
+        // <h3 class="text-warning">No News Found. Please try a new search</h3>
+        newsFound.innerHTML = `
+        <h3 class="text-danger">${categoryNews.length} News Found in category ${category_name}. Please try another category</h3>
+        `
+
+    }
+    else if (categoryNews.length > 0) {
+        newsFound.classList.remove('d-none');
+        newsFound.innerHTML = `
+        <h3 class="text-success">${categoryNews.length} news found in category ${category_name}. </h3>
+        `
+    }
+    else {
+        newsFound.classList.add('d-none');
+    }
 
     // display all phones
     categoryNews.forEach(news => {
@@ -53,7 +87,7 @@ const displayNews = (categoryNews) => {
             </div>
             <div class="col-md-8 ">
                 <div class="h-100 card-body d-flex flex-column justify-content-between">
-                    <div class=" d-flex flex-column gap-4">
+                    <div class=" d-flex flex-column gap-4 mb-3">
                         <h5 class="card-title">${news.title}</h5>
                          <p class="card-text text-truncate">${news.details.slice(1, 200)}</p>
                     </div>
@@ -84,10 +118,13 @@ const displayNews = (categoryNews) => {
     </div>`;
         newsContainer.appendChild(newsDiv);
     });
+    toggleSpinner(false);
+
 }
 
 
-//  load news detail on click 
+
+//  load news detail on click  and ready for modal
 const loadNewsDetails = async (news_id) => {
     const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
     const res = await fetch(url);
