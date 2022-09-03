@@ -63,7 +63,6 @@ const displayNews = (categoryNews, category_name) => {
         newsFound.innerHTML = `
         <h3 class="text-danger">${categoryNews.length} News Found in category ${category_name}. Please try another category</h3>
         `
-
     }
     else if (categoryNews.length > 0) {
         newsFound.classList.remove('d-none');
@@ -75,7 +74,7 @@ const displayNews = (categoryNews, category_name) => {
         newsFound.classList.add('d-none');
     }
 
-    // display all phones
+    // display all news
     categoryNews.forEach(news => {
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('row', 'row-cols-1', 'row-cols-md-1', 'g-4');
@@ -89,7 +88,7 @@ const displayNews = (categoryNews, category_name) => {
                 <div class="h-100 card-body d-flex flex-column justify-content-between">
                     <div class=" d-flex flex-column gap-4 mb-3">
                         <h5 class="card-title">${news.title}</h5>
-                         <p class="card-text text-truncate">${news.details.slice(1, 200)}</p>
+                         <p class="card-text text-truncate">${news.details.slice(0, 200)}</p>
                     </div>
 
                     <div class="d-flex justify-content-between          align-items-center">
@@ -101,10 +100,11 @@ const displayNews = (categoryNews, category_name) => {
                             </div>
                         </div>
                         <div>
-                            <i class="far fa-eye"></i>
+                            <i class="far fa-eye text-info"></i>
                             <span class="ms-2">${news.total_view ? news.total_view : 'No Views'}</span>
                          </div>
                         <div>
+                              <i class="fas fa-star text-warning"></i>
                             <span>${news.rating?.number ? news.rating.number : 'No Rating'}</span>
                          </div>
                         <div>
@@ -152,10 +152,11 @@ const displayNewsDetails = newsDetail => {
             </div>
         </div>
         <div>
-            <i class="far fa-eye"></i>
+            <i class="far fa-eye text-info"></i>
             <span class="ms-2">${newsDetail.total_view ? newsDetail.total_view : 'No Views'}</span>
         </div>
         <div>
+             <i class="fas fa-star text-warning"></i>
             <span>${newsDetail.rating?.number ? newsDetail.rating.number : 'No Rating'}</span>
         </div>
     </div>
