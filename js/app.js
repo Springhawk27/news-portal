@@ -21,7 +21,7 @@ const displayCategories = (categories) => {
                 `;
         categoriesContainer.appendChild(categoryP);
 
-
+        loadCategoricalNews('08', 'All News');
     });
 }
 
@@ -138,6 +138,12 @@ const displayNewsDetails = newsDetail => {
     console.log(newsDetail);
     const newsTitle = document.getElementById('newsDetailTitle');
     newsTitle.innerText = newsDetail.title;
+
+    const modalImage = document.getElementById('modal-image');
+    modalImage.innerHTML = `
+    <img src="${newsDetail.image_url}" class="img-fluid rounded-start p-3" alt="...">   
+    `;
+
     const newsDetails = document.getElementById('news-details');
     newsDetails.innerHTML = `
         <p>Decription: ${newsDetail.details ? newsDetail.details : 'No Details Found'}</p>
