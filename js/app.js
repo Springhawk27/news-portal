@@ -46,50 +46,42 @@ const displayNews = (categoryNews) => {
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('row', 'row-cols-1', 'row-cols-md-1', 'g-4');
         newsDiv.innerHTML = `
-     <div class="card mb-3">
+     <div class="card mb-3 p-0">
         <div class="row g-0">
-            <div class="col-md-4">
-            <img src="${news.thumbnail_url}" class="img-fluid rounded-start" alt="...">
+            <div class="col-md-4 d-flex align-items-center">
+                <img src="${news.thumbnail_url}" class="img-fluid rounded-start  h-100 p-3" alt="...">
             </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">${news.title}</h5>
-                    <p class="card-text">${news.details}</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    
+            <div class="col-md-8 ">
+                <div class="h-100 card-body d-flex flex-column justify-content-between">
+                    <div class=" d-flex flex-column gap-4">
+                        <h5 class="card-title">${news.title}</h5>
+                         <p class="card-text text-truncate">${news.details.slice(1, 200)}</p>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex gap-2">
+                            <img class="rounded-circle" style="width: 64px; height: 64px;" src="${news.author.img}" alt="">
+                             <div>
+                                <h5 class="card-title">${news.author.name ? news.author.name : 'No Author'}</h5>
+                                <p>${news.author.published_date}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="far fa-eye"></i>
+                            <span class="ms-2">1.5M</span>
+                         </div>
+                        <div>
+                            <span>4.5</span>
+                         </div>
+                        <div>
+                          <a class="text-decoration-none text-secondary" href="#">See Details</a>
+                         <i class="fas fa-arrow-right text-primary"></i>
+                         </div>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>`;
-
-
-        `
-    <div class="card p-4">
-        <div class="col-md-4">
-            <img src="${news.thumbnail_url}" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">${news.title}</h5>
-                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-        </div>
-
-    </div>
-    `;
-
-        // newsDiv.innerHTML = `
-        // <div class="card p-4">
-        //     <img src="${news.image}" class="card-img-top" alt="...">
-        //     <div class="card-body">
-        //         <h5 class="card-title">${news.title}</h5>
-        //         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        //         <button onclick="loadPhoneDetails('${phone.slug}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#phoneDetailModal">Show Details</button>
-
-        //     </div>
-        // </div>
-        // `;
         newsContainer.appendChild(newsDiv);
     });
 
