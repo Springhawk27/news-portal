@@ -1,10 +1,10 @@
 // load categories 
-const loadCategories = async () => {
+const loadCategories = async (order) => {
     const url = `https://openapi.programming-hero.com/api/news/categories`
     try {
         const res = await fetch(url);
         const data = await res.json();
-        displayCategories(data.data.news_category);
+        displayCategories(data.data.news_category, order);
         // console.log(data.data.news_category)
     }
     catch (error) {
@@ -13,7 +13,7 @@ const loadCategories = async () => {
 }
 
 // display categories
-const displayCategories = (categories) => {
+const displayCategories = (categories, order) => {
     const categoriesContainer = document.getElementById('categories-container');
 
     // display all categories
@@ -26,7 +26,7 @@ const displayCategories = (categories) => {
                 `;
         categoriesContainer.appendChild(categoryP);
 
-        loadCategoricalNews('08', 'All News');
+        loadCategoricalNews('08', 'All News', order);
     });
 }
 
@@ -42,7 +42,7 @@ const toggleSpinner = isLoading => {
 }
 
 // load categorial news
-const loadCategoricalNews = async (id, category_name) => {
+const loadCategoricalNews = async (id, category_name, order) => {
     toggleSpinner(true);
 
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`
@@ -51,7 +51,7 @@ const loadCategoricalNews = async (id, category_name) => {
         const res = await fetch(url);
         const data = await res.json();
         // console.log(data.data)
-        displayNews(data.data, category_name);
+        displayNews(data.data, category_name, order);
     }
     catch (error) {
         console.log(error);
@@ -60,7 +60,7 @@ const loadCategoricalNews = async (id, category_name) => {
 }
 
 // display categorical news
-const displayNews = (categoryNews, category_name) => {
+const displayNews = (categoryNews, category_name, order) => {
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
 
@@ -83,11 +83,27 @@ const displayNews = (categoryNews, category_name) => {
         newsFound.classList.add('d-none');
     }
     // console.log('category news', categoryNews)
-    categoryNews.sort((a, b) => {
-        return b.total_view - a.total_view
-    })
-    // display all news
 
+    // sorting news by views
+
+    // categoryNews.sort((a, b) => {
+    //     return b.total_view - a.total_view
+    // })
+
+    if (order === 'descending') {
+        categoryNews.sort((a, b) => {
+            return b.total_view - a.total_view
+        })
+
+    }
+    else if (order === 'ascending') {
+        categoryNews.sort((a, b) => {
+            return a.total_view - b.total_view
+        })
+    }
+
+
+    // display all news
     categoryNews.forEach(news => {
         const newsDiv = document.createElement('div');
         // newsDiv.classList.add('row', 'row-cols-1', 'row-cols-sm-1', 'g-4');
@@ -183,4 +199,4 @@ const displayNewsDetails = newsDetail => {
     `
 }
 
-loadCategories()
+loadCategories('descending')

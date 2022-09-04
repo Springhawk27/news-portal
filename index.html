@@ -61,6 +61,21 @@
         </section>
         <!-- display count and message section ends here -->
 
+        <section class="container mb-5">
+            <div class="btn-group dropend">
+                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Sort By View
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a id="ascending" class="dropdown-item" onclick="loadCategories('ascending')"
+                            href="#">Ascending</a></li>
+                    <li><a id="descending" class="dropdown-item" onclick="loadCategories('descending')"
+                            href="#">Descending</a></li>
+                </ul>
+            </div>
+        </section>
+
         <!-- spinner section starts here  -->
         <section id="loader" class="d-none">
             <div style="height: 400px;" class="d-flex justify-content-center align-items-center">
