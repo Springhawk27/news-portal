@@ -15,6 +15,8 @@ const loadCategories = async (order) => {
 // display categories
 const displayCategories = (categories, order) => {
     const categoriesContainer = document.getElementById('categories-container');
+    categoriesContainer.textContent = '';
+
 
     // display all categories
     categories.forEach(category => {
@@ -22,7 +24,7 @@ const displayCategories = (categories, order) => {
         const categoryP = document.createElement('p');
 
         categoryP.innerHTML = `
-                <a onclick="loadCategoricalNews('${category.category_id}','${category.category_name}')" class="text-decoration-none text-secondary" href="#" >${category.category_name}</a>
+                <a onclick="loadCategoricalNews('${category.category_id}','${category.category_name}','descending')" class="text-decoration-none text-secondary" href="#" >${category.category_name}</a>
                 `;
         categoriesContainer.appendChild(categoryP);
 
@@ -68,7 +70,6 @@ const displayNews = (categoryNews, category_name, order) => {
     const newsFound = document.getElementById('found-message');
     if (categoryNews.length === 0) {
         newsFound.classList.remove('d-none');
-        // <h3 class="text-warning">No News Found. Please try a new search</h3>
         newsFound.innerHTML = `
         <h3 class="text-danger">${categoryNews.length} News Found in category ${category_name}. Please try another category</h3>
         `
@@ -85,11 +86,6 @@ const displayNews = (categoryNews, category_name, order) => {
     // console.log('category news', categoryNews)
 
     // sorting news by views
-
-    // categoryNews.sort((a, b) => {
-    //     return b.total_view - a.total_view
-    // })
-
     if (order === 'descending') {
         categoryNews.sort((a, b) => {
             return b.total_view - a.total_view
@@ -200,3 +196,4 @@ const displayNewsDetails = newsDetail => {
 }
 
 loadCategories('descending')
+
